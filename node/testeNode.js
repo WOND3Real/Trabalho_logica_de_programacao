@@ -1,8 +1,12 @@
+
+//modulos de conexção
 const express = require('express');
 const app = express();
 const port = 1010;
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
+
+//Variavél para ler função de ler nome do login
 let nomeUsuario = ''
 
 // Configuração do banco de dados
@@ -19,6 +23,9 @@ connection.connect((err) => {
     console.log('Conectado ao banco de dados MySQL.');
 });
 
+// Configurar o middleware para processar os dados do formulário
+app.use(express.urlencoded({ extended: true }));
+
 // Configuração do body-parser
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -31,7 +38,8 @@ app.get('/', function(req, res) {
 app.post('/login', (req, res) => {
     const nome = req.body.nomeLogin;
     const senha = req.body.senhaLogin;
-    const query = 'SELECT * FROM credenciais_clientes WHERE nome = ? AND senha = ?';
+    const loginType = req.body.modalidade;
+    const query = 'SELECT * FROM ' + loginType + ' WHERE nome = ? AND senha = ?';
     connection.query(query, [nome, senha], (err, results) => {
         if (err) throw err;
         if (results.length > 0) {
@@ -44,6 +52,8 @@ app.post('/login', (req, res) => {
         }
     });
 });
+
+
 
 // Rota GET para exibir a página com todas as informações do banco de dados
 app.get('/usuarios', (req, res) => {
@@ -59,11 +69,13 @@ app.get('/usuarios', (req, res) => {
                 let html = '<h1>Lista de Usuários</h1>';
         if (results.length > 0) {
             results.forEach((usuario) => {
-                html += `<p>ID: ${usuario.id}</p>`;
-                html += `<p>Nome: ${usuario.nome}</p>`;
-                html += `<p>CPF: ${usuario.cpf}</p>`;
-                html += `<p>Senha: ${usuario.senha}</p>`;
-                html += `<p>Data de Nascimento: ${usuario.nascimento}</p>`;
+                html += `<p class="texto">ID: ${usuario.id}</p>`;
+                html += `<p class="texto">Nome: ${usuario.nome}</p>`;
+                html += `<p class="texto">CPF: ${usuario.cpf}</p>`;
+                html += `<p class="texto">Senha: ${usuario.senha}</p>`;
+                const dataNascimento = new Date(usuario.nascimento);
+                const dataFormatada = `${dataNascimento.getDate()} de ${getNomeMes(dataNascimento.getMonth())} de ${dataNascimento.getFullYear()}`;
+                html += `<p>Data de Nascimento: ${dataFormatada}</p>`;
                 html += `<p>Sexo: ${usuario.sexo}</p>`;
                 html += '<hr>';
             });
@@ -73,6 +85,17 @@ app.get('/usuarios', (req, res) => {
          res.send(html);
      });
 });
+
+//mini função para formatação de data
+function getNomeMes(mes) {
+    const meses = [
+      'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho',
+      'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'
+    ];
+    return meses[mes];
+}
+
+
 
 //tela de registro
 app.get('/paginaRegistro', function(req, res) {

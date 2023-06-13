@@ -5,18 +5,24 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=, initial-scale=1.0">
         <script src="js/script.js"></script>
-        <script src="node/testeNode.js"></script>
+        <script src="/node/testeNode.js"></script>
         <title>Document</title>
     </head>
     <body>
         <form id="loginForm" method="POST" action="/login">
             <h1>login</h1>
-            <h3>Digite seu email:</h3>
+            <h3>Digite seu nome:</h3>
             <input name="nomeLogin" type="text" placeholder="nome" required>
             <h3>Digite sua senha:</h3>
             <input name="senhaLogin" type="password" placeholder="senha" required><br>
-            <button type="submit" onclick=teste()>Entrar</button>
+            <p>Logar como:</p>
+             <select id="modalidade" name="modalidade" required>
+                <option value="credenciais_clientes">Cliente</option>
+                <option value="credenciais_doutores">Doutor</option>
+                <option value="credenciais_atendentes">Atendente</option>
+            </select>
+            <button type="submit">Entrar</button>
+            <a href="/paginaRegistro">Crie sua conta</a>
         </form>
-        <a href="/paginaRegistro">Crie sua conta</a>
     </body>
 </html>
