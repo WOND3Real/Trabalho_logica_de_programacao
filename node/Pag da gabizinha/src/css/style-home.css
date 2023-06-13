@@ -1,0 +1,271 @@
+/* Importação do reset */
+@import url(./reset.css);
+
+/* Fonte padrão */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800;900&display=swap');
+
+* {
+    font-family: 'Raleway', sans-serif;
+}
+
+/* Cores Padrão */
+:root {
+
+    --bg-purple: #7824A6;
+    --bg-orange: #F69025;
+}
+
+body {
+    background-color: #F3F3F3;
+}
+
+/* -Estilização do header- */
+
+/* estilização da linha supeiror */
+header .line--header {
+    background-color: var(--bg-purple);
+    width: 100%;
+    height: 10px;
+}
+
+/* centralização do cabecalho */
+header nav {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1240px;
+    margin: auto;
+
+    height: 130px;
+    align-items: center;
+}
+
+/* dimui a logo */
+header .logo--header img {
+    width: 100px;
+    height: 83px;
+}
+
+/* estilização do botão */
+header .login--header input {
+    width: 119px;
+    height: 60px;
+    background: linear-gradient(102deg, #F69025 14%, #7824A6 84%);
+    border-radius: 30px;
+    border: 2px solid transparent;
+
+    color: #fff;
+    font-weight: 800;
+    font-size: 24px;
+
+    cursor: pointer;
+
+}
+
+/* -Estilizaçao da haba a */
+
+/* Coloração do fundo total */
+article {
+    background-image: linear-gradient(to bottom, var(--bg-orange), var(--bg-purple));
+    background-size: 100%;
+  
+}
+
+/* Config do Grid */
+article .container--header {
+    max-width: 1240px;
+    margin: auto;
+    
+    display: grid;
+    grid-template-areas:
+        "item2 item1" 
+    ;
+    
+}
+
+/* Grid com texto */
+article .title--header {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    grid-area: item1;
+    background-color: transparent;
+    max-width: 600px;
+    min-width: 300px;
+}
+
+/* Test do prmeiro grid */
+article .title--header h1 {
+    color: #fff;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 96px;
+    margin-left: 40px;
+
+    height: 350px;
+
+    margin-top: 40px;
+    margin-bottom: 40px;
+
+    animation: bounceIn; 
+    animation-duration: 2s;
+
+}
+/* botão do primeiro grid */
+article .title--header input {
+    background-color: transparent;
+
+    border: 10px solid #ffffff;
+    border-radius: 65px;
+    width: 320px;
+    height: 120px;
+
+    color: #fff;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    text-align: center;
+
+    max-width: 320px;
+    margin-left: 40px;
+    margin-bottom: 40px;
+    margin-top: 0;
+
+    cursor: pointer;
+}
+
+/* Grtd com img */
+article .img--header {
+    grid-area: item2;
+    background-color: transparent;
+    max-width: 600px;
+    min-width: 300px;
+
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    
+}
+
+/* Posicionando as bolhas atras */
+.img--header {
+    position: relative;
+}
+
+.img--header div {
+    z-index: 2;
+}
+
+
+.img--header  img {
+    width: 500px;
+    filter: drop-shadow(21px 6px 30px rgba(0, 0, 0, 0.20));
+    
+}
+
+.img--header .ellipse01--header {
+    z-index: 1;
+    position: absolute;
+    left: 50px;
+    top: 20px;
+    width: 246px;
+    height: 246px;
+
+    background: var(--bg-purple);
+    border-radius: 50%;
+}
+
+.img--header div:nth-child(3) {
+    z-index: 1;
+    position: absolute;
+    width: 53px;
+    height: 53px;
+    left: 50px;
+    top: 250px;
+    
+    background: rgba(255, 255, 255, 0.97);
+    border-radius: 50%;
+
+}
+
+.img--header div:nth-child(4) {
+    z-index: 1;
+    position: absolute;
+    width: 101px;
+    height: 101px;
+    left:100px;
+    top: 300px;
+    
+    background: rgba(255, 255, 255, 0.96);
+    border-radius: 50%;
+
+}
+
+.img--header div:nth-child(5) {
+    z-index: 1;
+    position: absolute;
+    width: 89px;
+    height: 89px;
+    left: 90px;
+    top:480px;
+    
+    background: rgba(255, 255, 255, 0.87);
+    border-radius: 50%;
+
+}
+
+.img--header div:nth-child(6) {
+    z-index: 1;
+    position: absolute;
+    width: 72px;
+    height: 72px;
+    left: 350px;
+    top: 196px;
+    
+    background: rgba(255, 255, 255, 0.74);
+    border-radius: 50%;
+
+}
+
+.img--header div:nth-child(7) {
+    z-index: 1;
+    position: absolute;
+    width: 52px;
+    height: 52px;
+    left:420px;
+    top: 300px;
+
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 50%;
+
+}
+
+.img--header div:nth-child(8) {
+    z-index: 1;
+    position: absolute;
+    width: 178px;
+    height: 178px;
+    left: 310px;
+    top: 400px;
+    
+    background: var(--bg-orange);
+    border-radius: 50%;
+
+}
+
+/* -Animação- */
+
+article .title--header input:hover {
+    background-color: #F69025;
+    transition-duration: 1s;
+    transform: scale(1.1);
+    transition-timing-function: ease-in-out;
+}
+
+header .login--header input:hover {
+
+    transition-duration: 1s;
+    transform: scale(1.1);
+    transition-timing-function: ease-in-out;
+
+}

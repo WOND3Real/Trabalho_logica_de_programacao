@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | VitaLab</title>
+
+    <link rel="stylesheet" href="../src/css/style-login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script src="../src/js/script.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <img src="../src/image/logo.png" alt="">
+        <label for="">
+            <h1>Selecione seu Login</h1>
+            <select name="Login" id="meuSelect" onchange="mudarPagina()">
+                <option value="./login.html">Paciente</option>
+                <option value="./login-med.html">Medico</option>
+                <option value="./login-ass.html">Assistente</option>
+            </select>
+
+        </label>
+    </header>
+
+    <article class="article">
+        <article id="article">
+            <div class="container--article">
+                <h1>Login | Cadastrar</h1>
+                <p>Novo usuário <a href="../reg.html">Cadastre-se</a></p>
+
+                <form>
+                    <div class="textbox--article">
+                        <i class="fa-solid fa-user" style="color: #f69025;"></i>
+                        <input type="number" placeholder="CPF" name="CPF" required maxlength="11" minlength="11">
+                    </div>
+
+                    <div class="textbox--article">
+                        <i class="fa-solid fa-lock" style="color: #f69025;"></i>
+                        <input type="password" placeholder="Senha" name="senha" required>
+                    </div>
+
+                    <!-- Mudar para type submit -->
+                    <a href="../logged/logged.html"><input type="button" value="Conectar" class="conect--article" name="conectar"></a>
+                </form>
+            </div>
+
+        </article>
+    </article>
+    
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastre-se | VitaLab</title>
+
+    <link rel="stylesheet" href="./src/css/style-reg.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <img src="./src/image/logo.png" alt="">
+    </header>
+
+    <article class="article">
+        <article id="article">
+            <div class="container--article">
+                <h1>Cadastrar</h1>
+                <p>Bem-vindo ao VitaLab</p>
+
+
+                <form>
+                    <div class="textbox--article">
+                    <input type="text" placeholder="Nome Completo" name="nome" required maxlength="50">
+                    </div>
+
+                    <div class="textbox--article">
+                        <input type="number" placeholder="CPF" name="cpf" required maxlength="11" minlength="11">
+                    </div>
+
+                    <div class="textbox--article">
+                        <input type="email" placeholder="Email" name="email" required maxlength="50">
+                    </div>
+
+                    <div class="textbox--article">
+                        <input type="password" placeholder="Senha" name="senha" required maxlength="10">
+                    </div>
+
+                    <div class="textbox--article">
+                        <input type="password" placeholder="Confirme sua Senha" required maxlength="10">
+                    </div>
+
+                    <!-- Mudar para type submit -->
+                    <a href="./login/login.html"><input type="button" value="Cadastrar" class="conect--article"></a>
+                </form>
+            </div>
+
+        </article>
+    </article>
+    
+    
+</body>
+</html>
