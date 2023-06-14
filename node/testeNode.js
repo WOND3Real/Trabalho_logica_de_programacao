@@ -31,7 +31,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Rota GET para exibir o formulário de login
 app.get('/', function(req, res) {
-    res.sendFile(__dirname + '/html/index.html');
+    res.sendFile(__dirname + '/html/html/loginProvisorio.html');
 });
 
 // Rota POST para processar o login

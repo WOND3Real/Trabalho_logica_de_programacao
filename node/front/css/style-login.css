@@ -1,0 +1,209 @@
+/* Importação do reset */
+@import url(./reset.css);
+
+/* Fonte padrão */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800;900&display=swap');
+
+* {
+    font-family: 'Raleway', sans-serif;
+}
+
+/* Cores Padrão */
+:root {
+
+    --bg-purple: #7824A6;
+    --bg-orange: #F69025;
+    --bg-orengelight: #FAD08D;
+    
+}
+
+body {
+    background-color: #F3F3F3;
+}
+/* -Header- */
+
+header {
+    display: flex;
+    max-width: 1240px;
+    margin: auto;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header img {
+    width: 100px;
+    height: 83px;
+
+}
+
+/* estlização e centralização do header*/
+header label {
+    display: flex;
+    height: 130px;
+    align-items: center;
+
+}
+
+header label h1 {
+    padding: 10px;
+    border-radius: 25px;
+    background-color: rgba(246, 144, 37, 0.7);
+    border: 5px solid var(--bg-orengelight);
+    font-size: 25px;
+    margin-right: 5px;
+}
+
+header select {
+    background-color: rgba(246, 144, 37, 0.7);
+    border: 5px solid var(--bg-orengelight);
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 25px;
+    padding: 10px;
+    font-size: 25px;
+}
+
+header select option {
+    font-weight: bold;
+    font-size: 25px;
+}
+
+/* -Article- */
+
+/* fundo Gradente */
+.article {
+    background-image: linear-gradient(45deg, var(--bg-purple), var(--bg-orange));
+    opacity: 80%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* fundo branco  */
+#article {
+    max-width: 1240px;
+
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    margin-top: 29px;
+    margin-bottom: 28px;
+
+    width: 550px;
+    height: 430px;
+    background: #FFFFFF;
+    border: 5px solid #FAD08D;
+    border-radius: 38px;
+}
+
+article .container--article {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ttulo de login/cadastro */
+article .container--article h1 {
+    margin-top: 30px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+
+    text-align: center;
+    color: #000000;
+
+}
+
+/* subtitulo de cadastro */
+article .container--article p {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 60px;
+
+    color: #000000;
+}
+
+/* link do cadastro */
+article .container--article p a {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+
+    color: var(--bg-purple);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Estilzação do text box */
+article .textbox--article {
+    width: 100%;
+    height: 40px;
+    background-color: #F3F3F3;
+    border: 1px solid #FAD08D;
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+article .textbox--article i {
+    margin-left: 15px;
+}
+
+article .textbox--article input {
+    height: 100%;
+    width: 85%;
+    border: none;
+    background-color: #F3F3F3;
+    font-size: 20px;
+}
+
+input:focus-visible {
+    outline: none;
+}
+
+/* Estilização do botton */
+
+.conect--article{
+    margin-left: 60px;
+    margin-right: 60px;
+    padding: 20px;
+
+    background: #FAD08D;
+    border-radius: 20px;
+    border: none;
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    text-align: center;
+
+    color: #000000;
+
+    cursor: pointer;
+}
+
+/* -Animação- */
+
+.conect--article:hover {
+    background-color: #F69025;
+    transition-duration: 1s;
+    transform: scale(1.1);
+    transition-timing-function: ease-in-out;
+}
+
+/* Validação */
+
+.textbox--article input:invalid {
+    color: red;
+}
+
+.textbox--article input:valid {
+    color:green;
+}
+

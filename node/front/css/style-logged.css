@@ -1,0 +1,122 @@
+/* Importação do reset */
+@import url(./reset.css);
+
+/* Fonte padrão */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800;900&display=swap');
+
+* {
+    font-family: 'Raleway', sans-serif;
+}
+
+/* Cores Padrão */
+:root {
+
+    --bg-purple: #7824A6;
+    --bg-orange: #F69025;
+    --bg-orangelight: #FAD08D;
+    
+}
+
+/* -Header- */
+
+/* fundo laranja */
+.header {
+    background-color: rgba(246, 144, 37, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* fundo branco */
+#header {
+    margin-top: 60px;
+    margin-bottom: 60px;
+    background-color: #fff;
+
+    width: calc(100% - 200px);
+    height: auto;
+
+    border: 5px solid #FAD08D;
+    border-radius: 48px;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* centralização do conteudo */
+#container--header {
+    max-width: 900px;
+    margin: auto;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    display: flex;
+    gap: 10px;
+}
+
+/* mudando tamanho da img */
+.profile--header img{
+    width: 132px;
+    height: 139px;
+
+    border-radius: 80px;
+    margin-top: 20px;
+}
+
+.line--logged {
+    margin-top: 10px;
+    height: 5px;
+    background-color:var(--bg-orangelight);
+    width: 100%;
+}
+
+/* dados dos pacientes */
+.datapeople--header {
+    display: grid;
+    margin-top: 60px;
+    margin-left: 80px;
+    grid-gap: 20px;
+    max-height: 30px;
+}
+
+.datapeople--header div {
+    max-height: 30px;
+}
+
+.datapeople--header div:nth-child(1){
+    grid-area: nome;
+}
+
+.containerdata--table {
+
+    font-weight: 600;
+    font-size: 20px;
+    color: #000000;
+
+}
+
+/* tabela */
+
+table {
+    border-radius: 40px;
+}
+
+table,th,td {
+    margin: 40px;
+    border: 5px solid var(--bg-orangelight);
+    border-collapse: collapse;
+    padding: 5px 10px 5px 10px;
+
+}
+
+table tr th {
+    background-color: #FAD08D;
+}
+
+table tr td {
+    font-weight: 500;
+}
+
+
+
+
