@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | VitaLab</title>
+    <link rel="stylesheet" href="./front/css/style-login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="./testeNode.js"></script>
+    <script src="./front/js/script.js"></script>
+</head>
+
+<body>
+    <header>
+       <a href="./index.html"><img src="./front/image/logo.png" alt="logo.png"></a>
+            <form action="/login" method="post">
+            <label for="">
+            <h1>Selecione seu Login</h1>
+            <select name="modalidade" id="meuSelect">
+                <option value="credenciais_clientes">Paciente</option>
+                <option value="credenciais_doutores">Medico</option>
+                <option value="credenciais_atendentes">Atendente</option>
+            </select>
+        </label>
+    </header>
+    <article class="article">
+        <article id="article">
+            <div class="container--article">
+                <h1 style="padding-bottom: 15px;">Login | Cadastrar</h1>
+                    <div class="textbox--article">
+                        <i class="fa-solid fa-user" style="color: #f69025;"></i>
+                        <input type="text" placeholder="Nome" name="nomeLogin" required>
+                    </div>
+                    <div class="textbox--article">
+                        <i class="fa-solid fa-lock" style="color: #f69025;"></i>
+                        <input type="password" placeholder="Senha" name="senhaLogin" required>
+                    </div>
+
+                    <!-- Mudar para type submit -->
+                    <button type="submit" value="Conectar" class="conect--article" name="conectar">Conectar</button>
+                </form>
+                <p>Novo usuário <a href="cadastro.html">Cadastre-se</a></p>
+            </div>
+        </article>
+    </article>
+    
+</body>
+</html>

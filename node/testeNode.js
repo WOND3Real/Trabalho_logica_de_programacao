@@ -5,6 +5,9 @@ const app = express();
 const port = 1010;
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
+const fs = require('fs');
+const $ = require('jquery');
+const { JSDOM } = require('jsdom');
 
 //Variavél para ler função de ler nome do login
 let nomeUsuario = ''
@@ -29,10 +32,17 @@ app.use(express.urlencoded({ extended: true }));
 // Configuração do body-parser
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Rota GET para exibir o formulário de login
+// Rota para pagina incial
 app.get('/', function(req, res) {
-    res.sendFile(__dirname + '/html/html/loginProvisorio.html');
+    res.sendFile(__dirname + '/index.html');
 });
+
+// Rota GET para exibir o formulário de login
+app.get('/pagLogin',function(req, res){
+    res.sendFile(__dirname + '/login.html');
+});
+
+
 
 // Rota POST para processar o login
 app.post('/login', (req, res) => {
@@ -45,6 +55,7 @@ app.post('/login', (req, res) => {
         if (results.length > 0) {
             // Credenciais corretas
             nomeUsuario = nome;
+            tipoLogin = loginType;
             res.redirect('/usuarios');
         } else {
             // Credenciais incorretas
@@ -58,32 +69,43 @@ app.post('/login', (req, res) => {
 // Rota GET para exibir a página com todas as informações do banco de dados
 app.get('/usuarios', (req, res) => {
     const nome = nomeUsuario;
+    const loginType = tipoLogin
     if (!nome) {
         res.send('Acesso não autorizado!');
         return;
     }
-    res.sendFile(__dirname + '/html/html/telaUsuario.html')
-    const query = 'SELECT id,nome,cpf,senha,nascimento,sexo FROM credenciais_clientes WHERE nome = ?';
+    res.sendFile(__dirname + '/conta.html')
+    const query = 'SELECT id,nome,cpf,senha,nascimento,sexo FROM ' + loginType + ' WHERE nome = ' + "'" + nome + "'";
     connection.query(query, [nome], (err, results) => {
-        if (err) throw err;
-                let html = '<h1>Lista de Usuários</h1>';
-        if (results.length > 0) {
-            results.forEach((usuario) => {
-                html += `<p class="texto">ID: ${usuario.id}</p>`;
-                html += `<p class="texto">Nome: ${usuario.nome}</p>`;
-                html += `<p class="texto">CPF: ${usuario.cpf}</p>`;
-                html += `<p class="texto">Senha: ${usuario.senha}</p>`;
-                const dataNascimento = new Date(usuario.nascimento);
-                const dataFormatada = `${dataNascimento.getDate()} de ${getNomeMes(dataNascimento.getMonth())} de ${dataNascimento.getFullYear()}`;
-                html += `<p>Data de Nascimento: ${dataFormatada}</p>`;
-                html += `<p>Sexo: ${usuario.sexo}</p>`;
-                html += '<hr>';
-            });
-        } else {
-            html += '<p>Nenhum usuário encontrado.</p>';
-        }
-         res.send(html);
-     });
+        
+        fs.readFile(__dirname + '/conta.html', 'utf8', (error, html) => {
+            if (error) {
+              console.error('Ocorreu um erro ao ler o arquivo:', error);
+              return;
+            }
+            connection.query(query, (error, results) => {
+                if (error) {
+                  console.error('Erro ao executar a consulta:', error);
+                  return;
+                }
+              
+                if (results.length > 0) {
+                    const nome = results[0].nome; // Substitua "nome" pelo nome da coluna que contém o nome no seu banco de dados
+                
+                    // Atualizar o conteúdo do elemento <tr> com ID "batata"
+                    const trElementId = 'infNome';
+                    const trContent = `<td>${nome}</td>`; // Construa o novo conteúdo do elemento <tr>
+                    res.send(trContent)
+                    // Aqui você deve usar alguma lógica para substituir o conteúdo do elemento <tr> no seu arquivo HTML.
+                    // Você pode ler o conteúdo do arquivo, encontrar o elemento <tr> com o ID "batata" usando manipulação de strings
+                    // e substituir o conteúdo encontrado pelo novo conteúdo gerado.
+                    // Após a substituição, salve o arquivo HTML atualizado.
+                
+                    console.log(`Conteúdo atualizado para o elemento <tr> com ID "${trElementId}"`);
+                }
+            })
+        })
+    })
 });
 
 //mini função para formatação de data

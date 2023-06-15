@@ -46,7 +46,7 @@ header .logo--header img {
 }
 
 /* estilização do botão */
-header .login--header input {
+header .login--header button {
     width: 119px;
     height: 60px;
     background: linear-gradient(102deg, #F69025 14%, #7824A6 84%);
