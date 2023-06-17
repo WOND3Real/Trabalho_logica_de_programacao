@@ -1,0 +1,33 @@
+create database if not exists sistema_smt
+default character set utf8mb4
+default collate utf8mb4_general_ci;
+
+create table if not exists credenciais_clientes(
+id int not null auto_increment,
+nome varchar(30) not null,
+cpf decimal(11) not null unique,
+senha varchar(15) not null,
+nascimento date,
+sexo enum('M','F','O'),
+primary key (id)
+) default charset = utf8mb4;
+
+create table if not exists credenciais_doutores(
+id int not null auto_increment,
+nome varchar(30) not null,
+senha varchar(15) not null,
+especialidade varchar(50) not null,
+consultorio decimal(2),
+primary key (id)
+) default charset = utf8mb4;
+
+create table if not exists credenciais_atendentes(
+id int not null auto_increment,
+nome varchar(30) not null,
+senha varchar(15) not null,
+primary key (id)
+) default charset = utf8mb4;
+
+select * from credenciais_clientes;
+select * from credenciais_doutores;
+select * from credenciais_atendentes;
