@@ -125,6 +125,17 @@ input:focus-visible {
     outline: none;
 }
 
+article select {
+    background-color: rgba(246, 144, 37, 0.7);
+    border: 5px solid var(--bg-orengelight);
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 25px;
+    padding: 10px;
+    font-size: 25px;
+    justify-content: center;
+}
+
 /* Estilização do botton */
 
 .conect--article{

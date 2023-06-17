@@ -112,7 +112,7 @@ article .title--header h1 {
 
 }
 /* botão do primeiro grid */
-article .title--header input {
+article .title--header form button {
     background-color: transparent;
 
     border: 10px solid #ffffff;

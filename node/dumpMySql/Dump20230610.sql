@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `sistema_smt` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `sistema_smt`;
 -- MySQL dump 10.13  Distrib 8.0.33, for Win64 (x86_64)
 --
 -- Host: localhost    Database: sistema_smt
@@ -55,7 +57,7 @@ CREATE TABLE `credenciais_clientes` (
   `sexo` enum('M','F','O') DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `unico` (`cpf`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -64,7 +66,7 @@ CREATE TABLE `credenciais_clientes` (
 
 LOCK TABLES `credenciais_clientes` WRITE;
 /*!40000 ALTER TABLE `credenciais_clientes` DISABLE KEYS */;
-INSERT INTO `credenciais_clientes` VALUES (1,'Joao',12345678910,'123456','1996-04-23','M'),(3,'Dom ruan',12314796385,'arrodoce123','1000-05-15','M');
+INSERT INTO `credenciais_clientes` VALUES (1,'Joao',12345678910,'123456','1996-04-23','M'),(2,'Ruan',12314796385,'arrodoce123','1000-05-15','M'),(3,'Arroz',14697852310,'524387','2000-01-27','O'),(4,'Gabriel',2401366669,'queropika123','1969-06-24','O'),(7,'Flavio',15975346821,'468279315','2005-06-17','M');
 /*!40000 ALTER TABLE `credenciais_clientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -77,12 +79,13 @@ DROP TABLE IF EXISTS `credenciais_doutores`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `credenciais_doutores` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `nome` varchar(30) NOT NULL,
+  `nome_profissional` varchar(30) DEFAULT NULL,
   `senha` varchar(15) NOT NULL,
   `especialidade` varchar(50) NOT NULL,
   `consultorio` decimal(2,0) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`id`),
+  KEY `cl_especialidade` (`especialidade`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -91,6 +94,7 @@ CREATE TABLE `credenciais_doutores` (
 
 LOCK TABLES `credenciais_doutores` WRITE;
 /*!40000 ALTER TABLE `credenciais_doutores` DISABLE KEYS */;
+INSERT INTO `credenciais_doutores` VALUES (1,'Afonso Pinto','654321','1',9),(2,'Jeffeson Caminha','654123','2',7);
 /*!40000 ALTER TABLE `credenciais_doutores` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -107,4 +111,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-06-10 18:12:47
+-- Dump completed on 2023-06-17  1:10:47

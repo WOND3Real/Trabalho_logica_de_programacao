@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastre-se | VitaLab</title>
 
-    <link rel="stylesheet" href="./front/css/style-reg.css">
+    <link rel="stylesheet" href="/css/style-reg.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header>
-        <img src="./front/image/logo.png" alt="">
+        <a href="./index.html"><img src="/image/logo.png" alt=""></a>
     </header>
 
     <article class="article">
@@ -20,29 +20,32 @@
                 <p>Bem-vindo ao VitaLab</p>
 
 
-                <form>
+                <form action="/registro" method="post">
                     <div class="textbox--article">
-                    <input type="text" placeholder="Nome Completo" name="nome" required maxlength="50">
+                    <input type="text" placeholder="Nome Completo" name="registroNome" required maxlength="50">
                     </div>
 
                     <div class="textbox--article">
-                        <input type="number" placeholder="CPF" name="cpf" required maxlength="11" minlength="11">
+                        <input type="number" placeholder="CPF" name="registroCpf" required maxlength="11" minlength="11">
                     </div>
 
                     <div class="textbox--article">
-                        <input type="email" placeholder="Email" name="email" required maxlength="50">
+                        <input type="password" placeholder="Senha" name="registroSenha" required>
                     </div>
 
                     <div class="textbox--article">
-                        <input type="password" placeholder="Senha" name="senha" required maxlength="10">
+                        <input type="date" placeholder="nascimento" name="registroNascimento" required>
                     </div>
 
-                    <div class="textbox--article">
-                        <input type="password" placeholder="Confirme sua Senha" required maxlength="10">
-                    </div>
+                    <select name="registroSexo" id="registroSexo">
+                        <option value="">Sexo</option>
+                        <option value="M">Masculino</option>
+                        <option value="F">Feminino</option>
+                        <option value="O">Outro</option>
+                    </select>
 
                     <!-- Mudar para type submit -->
-                    <a href="./login.html"><input type="button" value="Cadastrar" class="conect--article"></a>
+                    <button type="submit" value="Cadastrar" class="conect--article">Cadastrar</button>
                 </form>
             </div>
 
