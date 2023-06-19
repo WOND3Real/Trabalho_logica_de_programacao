@@ -111,6 +111,7 @@ article .title--header h1 {
     animation-duration: 2s;
 
 }
+
 /* botão do primeiro grid */
 article .title--header form button {
     background-color: transparent;
@@ -254,7 +255,6 @@ article .img--header {
 }
 
 /* -Animação- */
-
 article .title--header input:hover {
     background-color: #F69025;
     transition-duration: 1s;

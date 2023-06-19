@@ -1,48 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- Define o tipo de documento como HTML -->
+<html lang="pt-br">
+<!-- Início do elemento HTML com atributo de idioma definido como "pt-br" (português brasileiro) -->
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | VitaLab</title>
-    <link rel="stylesheet" href="/css/style-login.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="testeNode.js"></script>
-    <script src="script.js"></script>
+    <meta charset="UTF-8"> 
+    <!-- Define a codificação de caracteres como UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <!-- Define a escala inicial e a largura do viewport -->
+    <title>Login | VitaLab</title> 
+    <!-- Define o título da página exibido na guia do navegador -->
+    <link rel="stylesheet" href="/css/style-login.css"> 
+    <!-- Importa um arquivo de estilo CSS externo -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> 
+    <!-- Importa um arquivo de estilo CSS externo da biblioteca Font Awesome -->
+    <script src="testeNode.js"></script> 
+    <!-- Importa um arquivo JavaScript chamado "testeNode.js" -->
+    <script src="script.js"></script> 
+    <!-- Importa um arquivo JavaScript chamado "script.js" -->
 </head>
-
 <body>
     <header>
-       <a href="./index.html"><img src="/image/logo.png" alt="logo.png"></a>
-            <form action="/login" method="post">
-            <label for="">
-            <h1>Selecione seu Login</h1>
-            <select name="modalidade" id="meuSelect">
-                <option value="credenciais_clientes">Paciente</option>
-                <option value="credenciais_doutores">Medico</option>
-                <option value="credenciais_atendentes">Atendente</option>
+        <a href="./index.html"><img src="/image/logo.png" alt="logo.png"></a> 
+        <!-- Insere um link para a página index.html e uma imagem como logotipo -->
+        <form action="/login" method="post"> 
+            <!-- Cria um formulário que será enviado para o caminho "/login" usando o método POST -->
+            <label for=""> 
+                <!-- Início de uma tag label (rótulo) -->
+            <h1>Selecione seu Login</h1> 
+            <!-- Cabeçalho de nível 1 -->
+            <select name="modalidade" id="meuSelect"> 
+                <!-- Cria um elemento de seleção (dropdown) com o nome "modalidade" e o ID "meuSelect" -->
+                <option value="credenciais_clientes">Paciente</option> 
+                <!-- Opção do dropdown com o valor "credenciais_clientes" -->
+                <option value="credenciais_doutores">Medico</option> 
+                <!-- Opção do dropdown com o valor "credenciais_doutores" -->
+                <option value="credenciais_atendentes">Atendente</option> 
+                <!-- Opção do dropdown com o valor "credenciais_atendentes" -->
             </select>
-        </label>
+        </label> 
+        <!-- Fim da tag label -->
     </header>
     <article class="article">
         <article id="article">
             <div class="container--article">
-                <h1 style="padding-bottom: 15px;">Login | Cadastrar</h1>
-                    <div class="textbox--article">
-                        <i class="fa-solid fa-user" style="color: #f69025;"></i>
-                        <input type="text" placeholder="Nome" name="nomeLogin" required>
-                    </div>
-                    <div class="textbox--article">
-                        <i class="fa-solid fa-lock" style="color: #f69025;"></i>
-                        <input type="password" placeholder="Senha" name="senhaLogin" required>
-                    </div>
-
-                    <!-- Mudar para type submit -->
-                    <button type="submit" value="Conectar" class="conect--article" name="conectar">Conectar</button>
-                </form>
-                <p>Novo usuário <a href="cadastro.html">Cadastre-se</a></p>
-            </div>
-        </article>
+                <h1 style="padding-bottom: 15px;">Login | Cadastrar</h1> 
+                <!-- Cabeçalho de nível 1 com estilo CSS inline -->
+                <div class="textbox--article">
+                    <i class="fa-solid fa-user" style="color: #f69025;"></i> 
+                    <!-- Ícone de usuário da biblioteca Font Awesome -->
+                    <input type="text" placeholder="Nome" name="nomeLogin" required> 
+                    <!-- Campo de entrada de texto para o nome do usuário -->
+                </div>
+                <div class="textbox--article">
+                    <i class="fa-solid fa-lock" style="color: #f69025;"></i> 
+                    <!-- Ícone de cadeado da biblioteca Font Awesome -->
+                    <input type="password" placeholder="Senha" name="senhaLogin" required> 
+                    <!-- Campo de entrada de senha -->
+                </div>
+                <!-- Botão para realizar a conexão -->
+                <button type="submit" value="Conectar" class="conect--article" name="conectar">Conectar</button> <!-- Botão de envio do formulário -->
+            </form> 
+            <!-- Fim do formulário -->
+            <p>Novo usuário <a href="cadastro.html">Cadastre-se</a></p> 
+            <!-- Texto e link para a página de cadastro -->
+        </div>
     </article>
-    
+</article>
 </body>
 </html>

@@ -1,57 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- Define o tipo de documento como HTML -->
+<html lang="pt-br">
+<!-- Início do elemento HTML com atributo de idioma definido como "pt-br" (português do Brasil) -->
 <head>
     <meta charset="UTF-8">
+    <!-- Define a codificação de caracteres como UTF-8 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Define a escala inicial e a largura do viewport -->
     <title>Cadastre-se | VitaLab</title>
-
+    <!-- Define o título da página exibido na guia do navegador -->
     <link rel="stylesheet" href="/css/style-reg.css">
+    <!-- Importa um arquivo de estilo CSS externo -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Importa um arquivo de estilo CSS externo -->
 </head>
 <body>
     <header>
         <a href="./index.html"><img src="/image/logo.png" alt=""></a>
+        <!-- Inclusão do logotipo -->
     </header>
-
     <article class="article">
         <article id="article">
             <div class="container--article">
                 <h1>Cadastrar</h1>
+                <!-- Título da seção de cadastro -->
                 <p>Bem-vindo ao VitaLab</p>
-
-
+                <!-- Mensagem de boas-vindas -->
                 <form action="/registro" method="post">
+                <!-- Formulário de registro com ação de envio para "/registro" usando o método POST -->
                     <div class="textbox--article">
-                    <input type="text" placeholder="Nome Completo" name="registroNome" required maxlength="50">
+                        <input type="text" placeholder="Nome Completo" name="registroNome" required maxlength="50">
+                        <!-- Campo de entrada de texto para o nome completo do usuário -->
                     </div>
 
                     <div class="textbox--article">
                         <input type="number" placeholder="CPF" name="registroCpf" required maxlength="11" minlength="11">
+                        <!-- Campo de entrada de número para o CPF do usuário -->
                     </div>
 
                     <div class="textbox--article">
                         <input type="password" placeholder="Senha" name="registroSenha" required>
+                        <!-- Campo de entrada de senha -->
                     </div>
 
                     <div class="textbox--article">
                         <input type="date" placeholder="nascimento" name="registroNascimento" required>
+                        <!-- Campo de entrada de data de nascimento -->
                     </div>
 
                     <select name="registroSexo" id="registroSexo">
+                        <!-- Lista suspensa para selecionar o sexo -->
                         <option value="">Sexo</option>
+                        <!-- Opção padrão "Sexo" -->
                         <option value="M">Masculino</option>
+                        <!-- Opção "Masculino" -->
                         <option value="F">Feminino</option>
+                        <!-- Opção "Feminino" -->
                         <option value="O">Outro</option>
+                        <!-- Opção "Outro" -->
                     </select>
-
-                    <!-- Mudar para type submit -->
                     <button type="submit" value="Cadastrar" class="conect--article">Cadastrar</button>
+                    <!-- Botão de envio do formulário -->
                 </form>
             </div>
-
         </article>
-    </article>
-    
-    
+    </article>   
 </body>
-</html>
+</html> <!-- Fim do elemento HTML -->

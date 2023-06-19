@@ -1,44 +1,54 @@
 <!DOCTYPE html>
-<html lang="pt">
-
+<!-- Define o tipo de documento como HTML -->
+<html lang="pt-br">
+<!-- Início do elemento HTML com atributo de idioma definido como "pt-br" (português brasileiro) -->
 <head>
     <meta charset="UTF-8">
+    <!-- Define a codificação de caracteres como UTF-8 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Bem-vindo a VitaLab </title>
+    <!-- Define a escala inicial e a largura do viewport -->
+    <title>Bem-vindo a VitaLab</title>
+    <!-- Define o título da página exibido na guia do navegador -->
     <link rel="stylesheet" href="/css/style-home.css">
+    <!-- Importa um arquivo de estilo CSS externo -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <!-- Importa um arquivo de estilo CSS externo da biblioteca Animate.css -->
     <script src="./testeNode.js"></script>
+    <!-- Importa um arquivo JavaScript chamado "testeNode.js" -->
 </head>
-
 <body>
-
     <header>
         <div class="line--header"></div>
-
+        <!-- Divisor de linha do cabeçalho -->
         <nav>
             <div class="logo--header"><img src="/image/logo.png" alt=""></div>
+            <!-- Inserção do logotipo -->
             <form action="/pagLogin" method="get">
-            <div class="login--header"><a href="./login.html"><button name="botaoLogin" type="submit" value="Login">Login</button></a></div>
+                <!-- Formulário de redirecionamento para a página de login -->
+                <div class="login--header"><a href="./login.html"><button name="botaoLogin" type="submit" value="Login">Login</button></a></div>
+                <!-- Botão de login -->
             </form>
         </nav>
     </header>
-
     <article>
-
         <article class="container--header">
             <div class="title--header">
-                <h1> Veja sua consulta aqui </h1>
-                <form action="/paginaRegistro">
+                <h1>Veja sua consulta aqui</h1>
+                <!-- Título principal -->
+                <form action="/paginaRegistro"> 
+                <!-- Formulário de redirecionamento para a página de registro -->
                     <button type="submit" value="Cadastre-se">Cadastre-se</button>
+                    <!-- Botão de cadastro -->
                 </form>
             </div>
-
             <div class="img--header">
                 <div>
                     <img src="/image/close-up-nurse-looking-documents-removebg-preview.png" alt="">
+                    <!-- Imagem de uma enfermeira olhando documentos -->
                 </div>
-                
                 <div class="ellipse01--header"></div>
+                <!-- Elemento de formato elíptico -->
+                <div></div>
                 <div></div>
                 <div></div>
                 <div></div>
@@ -48,6 +58,5 @@
             </div>
         </article>
     </article>
-    
 </body>
-</html>
+</html> <!-- Fim do elemento HTML -->

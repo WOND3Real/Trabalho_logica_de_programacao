@@ -1,4 +1,3 @@
-//modulos de conexção
 const express = require('express');
 const app = express();
 const port = 1010;
@@ -6,88 +5,106 @@ const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const path = require("path")
 const alert = require("alert-node")
+//modulos de conexção
 
-// Configuração do banco de dados
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '',
     database: 'sistema_SMT'
 });
+// Configuração do banco de dados
 
-//Feedback da Conexão com o banco de dados
 connection.connect((err) => {
     if (err) throw err;
+    //verificação de erro, se a variavel possuir um valor nela, então ouve erro, senão o codigo funcionará normalmente
     console.log('Conectado ao banco de dados MySQL.');
 });
+//Feedback da Conexão com o banco de dados
 
-// Configurar o middleware para processar os dados do formulário
 app.use(express.urlencoded({ extended: true }));
+// Configurar o middleware para processar os dados do formulário
 
-//configuração de arquivos estaticos para front end
+
 app.use(express.static(path.join(__dirname,"front")))
+//configuração de arquivos estaticos para front end
 
-//Variavél para função de ler nome do login universalmente
 let nomeUsuario = ''
+//Variavél para função de ler nome do login universalmente
 
-// Rota para pagina incial
 app.get('/', function(req, res) {
     res.sendFile(__dirname + '/index.html');
 });
+// Rota para pagina incial
 
-// Rota GET para exibir o formulário de login
 app.get('/pagLogin',function(req, res){
     res.sendFile(__dirname + '/login.html');
 });
+// Rota GET para exibir o formulário de login
 
-// Rota POST para processar o login do formulário
 app.post('/login', (req, res) => {
-    //variaveis requerindo valores inseridos no corpo do html
+// Rota POST para processar o login do formulário
     const nome = req.body.nomeLogin;
     const senha = req.body.senhaLogin;
     const loginType = req.body.modalidade;
-    //variavél possuindo o comando direcionado ao MySql
+    //variaveis requerindo valores inseridos no corpo do html
     const query = 'SELECT * FROM ' + loginType + ' WHERE nome = ? AND senha = ?';
-    //função para verificação de dados no banco de dados
+     //variavél possuindo o comando direcionado ao MySql
     connection.query(query, [nome, senha], (err, results) => {
+        //função para verificação de dados no banco de dados
         if (err) throw err;
+        //verificação de erro, se a variavel possuir um valor nela, então ouve erro, senão o codigo funcionará normalmente
         if (results.length > 0) {
             // Credenciais corretas
             nomeUsuario = nome;
+            // atribui o valor da variavel nome à uma variavel global
             tipoLogin = loginType;
+            // atribui o valor da variavel do tipo de login à uma variavel global
             res.redirect('/usuarios');
+            // Redireciona para rota contendo as informações dos usúarios
         } else {
-            // Credenciais incorretas
             res.send('Nome ou senha inválidos!');
+            // Credenciais incorretas
         }
     });
 });
 
-// Rota GET para exibir a página com todas as informações do banco de dados
 app.get('/usuarios', (req, res) => {
-    //variaveis puxando valores de escupo global para a função em questão
+// Rota GET para exibir a página com todas as informações do banco de dados
     const nome = nomeUsuario;
     const loginType = tipoLogin;
+    //variaveis puxando valores de escopo global para a função em questão
     if (!nome){
+    //verifica se a variavel nome é nula ou vazia, se for, finalizará o codigo
         res.send('Acesso não autorizado!');
         return;
     } else {
-        //função para consulta de dados no mysql
         const query = 'SELECT id, nome, cpf, senha, nascimento, sexo FROM ' + loginType + ' WHERE nome = ?';
         connection.query(query, [nome], (err, results) => {
+        //função para consulta de dados no mysql
             if (err) {
+            //verificação de erro, se a variavel possuir um valor nela, então ouve erro, senão o codigo funcionará normalmente
                 console.error('Erro ao executar a consulta:', err);
                 return;
             }
-            //função para imprimir os dados do usuario logado
             if (results.length > 0) {
-                //variavel com array contendo dados da tabela mysql
+                //função para imprimir os dados do usuario logado
                 const data = results[0];
-                //mini função para formatar data
+                //variavel com array contendo dados da tabela mysql
                 const dataNascimento = new Date(data.nascimento);
                 const dataFormatada = `${dataNascimento.getDate()} de ${getNomeMes(dataNascimento.getMonth())} de ${dataNascimento.getFullYear()}`;
-                res.set('Content-Type', 'text/html');
+                //mini função para formatar data
+                function getNomeMes(mes) {
+                    const meses = [
+                    'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho',
+                    'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'
+                    ];
+                    return meses[mes];
+                }
+                //mini função de seleção de meses para formatação de data
+                
                 //Geração de documento html com dados do usuário
+                res.set('Content-Type', 'text/html');
                 res.send(`
                 <!DOCTYPE html>
                 <html lang="en">
@@ -289,41 +306,36 @@ app.get('/usuarios', (req, res) => {
         });
     }
 });
+//Geração de documento html com dados do usuário
 
-//mini função de seleção de meses para formatação de data
-function getNomeMes(mes) {
-    const meses = [
-      'janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho',
-      'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'
-    ];
-    return meses[mes];
-}
-
-//Rota da tela de registro
 app.get('/paginaRegistro', function(req, res) {
     res.sendFile(__dirname + '/cadastro.html');
 });
+//Rota da tela de registro
 
-//função post para registrar usuários no banco de dados
 app.post('/registro', (req, res) =>{
-    //variaveis requerindo as informações inseridas no formulário
+    //função post para registrar usuários no banco de dados
     const idReg = "default"
     const nomeReg = req.body.registroNome;
     const cpfReg = req.body.registroCpf;
     const senhaReg = req.body.registroSenha;
     const dataReg = req.body.registroNascimento;
     const sexoReg = req.body.registroSexo;
-    //variavél contendo o contendo a inserção de informações do formulário de registro
+    //variaveis requerindo as informações inseridas no formulário
     const query = 'INSERT INTO credenciais_clientes (id,nome,cpf,senha,nascimento,sexo) VALUES (?, ?, ?, ?, ?, ?)';
+    //variavél contendo o contendo a inserção de informações do formulário de registro
     connection.query(query, [idReg, nomeReg, cpfReg, senhaReg, dataReg, sexoReg], (err, results) => {
         if (err) throw err;
+        //verificação de erro, se a variavel possuir um valor nela, então ouve erro, senão o codigo funcionará normalmente
         alert('Dados adicionados com sucesso!')
+        //alerta com feedback da ocorrencia
         res.redirect('/')
+        //redirecionamento para tela inicial
     });
 });
 
 //Inicialização do servidor
-//sempre no final do codigo
 app.listen(port, () => {
     console.log(`Servidor rodando em http://localhost:${port}`);
 });
+//sempre no final do codigo

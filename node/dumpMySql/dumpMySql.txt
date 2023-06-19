@@ -1,6 +1,7 @@
 create database if not exists sistema_smt
 default character set utf8mb4
 default collate utf8mb4_general_ci;
+#Esta instrução cria um banco de dados chamado "sistema_smt" se ele ainda não existir. O banco de dados terá um conjunto de caracteres padrão UTF-8 (utf8mb4) e uma ordem de classificação padrão UTF-8 (utf8mb4_general_ci).
 
 create table if not exists credenciais_clientes(
 id int not null auto_increment,
@@ -11,6 +12,14 @@ nascimento date,
 sexo enum('M','F','O'),
 primary key (id)
 ) default charset = utf8mb4;
+#Esta instrução cria uma tabela chamada "credenciais_clientes" se ela ainda não existir. A tabela terá as seguintes colunas:
+#"id": um número inteiro único e auto-incrementado.
+#"nome": uma cadeia de caracteres (varchar) de no máximo 30 caracteres, não nula.
+#"cpf": um número decimal de 11 dígitos, não nulo e único.
+#"senha": uma cadeia de caracteres (varchar) de no máximo 15 caracteres, não nula.
+#"nascimento": uma data de nascimento.
+#"sexo": uma enumeração (enum) que aceita os valores 'M', 'F' ou 'O' para representar masculino, feminino ou outro, respectivamente.
+#A chave primária da tabela é a coluna "id". A tabela usará o conjunto de caracteres UTF-8 (utf8mb4) como padrão.
 
 create table if not exists credenciais_doutores(
 id int not null auto_increment,
@@ -20,6 +29,13 @@ especialidade varchar(50) not null,
 consultorio decimal(2),
 primary key (id)
 ) default charset = utf8mb4;
+#Esta instrução cria uma tabela chamada "credenciais_doutores" se ela ainda não existir. A tabela terá as seguintes colunas:
+#"id": um número inteiro único e auto-incrementado.
+#"nome": uma cadeia de caracteres (varchar) de no máximo 30 caracteres, não nula.
+#"senha": uma cadeia de caracteres (varchar) de no máximo 15 caracteres, não nula.
+#"especialidade": uma cadeia de caracteres (varchar) de no máximo 50 caracteres, não nula.
+#"consultorio": um número decimal de 2 dígitos.
+#A chave primária da tabela é a coluna "id". A tabela usará o conjunto de caracteres UTF-8 (utf8mb4) como padrão.
 
 create table if not exists credenciais_atendentes(
 id int not null auto_increment,
@@ -27,7 +43,17 @@ nome varchar(30) not null,
 senha varchar(15) not null,
 primary key (id)
 ) default charset = utf8mb4;
+#Esta instrução cria uma tabela chamada "credenciais_atendentes" se ela ainda não existir. A tabela terá as seguintes colunas:
+#"id": um número inteiro único e auto-incrementado.
+#"nome": uma cadeia de caracteres (varchar) de no máximo 30 caracteres, não nula.
+#"senha": uma cadeia de caracteres (varchar) de no máximo 15 caracteres, não nula.
+#A chave primária da tabela é a coluna "id". A tabela usará o conjunto de caracteres UTF-8 (utf8mb4) como padrão.
 
 select * from credenciais_clientes;
+#Esta instrução seleciona todos os registros da tabela "credenciais_clientes". O asterisco (*) indica que todas as colunas devem ser retornadas.
+
 select * from credenciais_doutores;
+#Esta instrução seleciona todos os registros da tabela "credenciais_doutores". O asterisco (*) indica que todas as colunas devem ser retornadas.
+
 select * from credenciais_atendentes;
+#Esta instrução seleciona todos os registros da tabela "credenciais_atendentes". O asterisco (*) indica que todas as colunas devem ser retornadas.
